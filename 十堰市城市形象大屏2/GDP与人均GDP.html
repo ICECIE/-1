@@ -1,0 +1,99 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=line-smooth&code=PYBwLglsB2AEC8sDeBYAULWkwBsCmAXMuppmHgB5hEDkggsqAMGoEB6gMSqBm1oJI2TgYcqAueoKbmgLrlA4uoBxACIAFQCvWgYPiaAGhKlyVAMpgAnviKoMpTADMYYNRABehWAEYALEv0GAxsBzAATrQDEAZj81lTABfBwMQAEMAE0iIaABzIgBtawAGBVg0jPSUgF1MAHp82EBgGMAXU0BwC0AMjMA4OUA_tUALCMAQt0Bd2MBuz2UQ5QoAQQoIAGddQKxNECsaJ3DyOI9NRWHIqfCkmmsATg3FWBoAJhT9rd3960O9lJ3T_Z9LlNsbgFYbgDYbgHYbgA4btcvU35P0kdrBdAXtrNdQSk7L9HpDrC84e84V84T9IXtLjsAds9jsLjkOqFYJpegMho4RmNaAA3cI4ACueAC-k6-jAwFckBA5IMYHcEDicTwnm24T6_XmFLFA0kwFi5BFegMZFG4yc7mA_QlwyChOU-CF0EiPNIizAy1giXozEAFoq8CSSfKAYWVAOBygGFFQ6MJh2kQO_IewGcb28X1Sf00HJEzAAI2AYHZAFsiKkCkUyga8EbAAxKDUAqXqAC4SWu0WUT-sKIHhBpbhkrlWaLYlhgZ4R8ngA6PE7dLWD5Qjv3V7pPY-WxtnxPD5DvzWNuvV73Ie2e4pNu2D5rIdrHZrNtQp7pHwpJ7tnwHnwfUfWKPK2zWaz3NtX2Br147-ywe73dar9KvEej09YAvNYfDbBdYDWe5bFeNtJxsFIL1AwcbD2EDH27HxhzA89r2bJcdlHD5wPhY8YJ2T9u1bHwH1efdYDBHYyPWJdKLWO9YK_Id4R8HdezgnZD1sdsPibWBI1ErQqW2aNwncSVlVgaBwgTcYvTtP1XQ9HVr1rAx6ySWw1lsQD7ieFJAKeTCu1gV4BOs-cPmstZzI3CDjOs1JbDxbtGMPbtlw2btXluOi8R8axkPInjQovXsDzxCjYGoj5WwPZz13SLy50yNdHOQqCnh7dJ7jYyzivnOd0gnHxX1_HYUp2cSKRVKSaBkuTcMU5TVNtEMxDDLSKVZAxdNNJYknBVsPNsaDAPhZcnwirdkPWe4cPogTXn4p5TOQw9eyfccjzgpchLo-4CI-J8B17cDjy_eynjWVKgLMux0jWed1tSFJXne-DX3OHyELimxksqmwlyg4jDxK1zwQuziwbnWymoUyTxna-TlSUlTaCDH1-sdQaDF1fQCTQIIAG4gA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: '十堰市和武汉市历年来人均GDP比较',
+    textStyle: {
+      fontSize: 14,
+      color: '#333'
+    },
+    padding: [10, 0, 0, 0]  // 调整标题与图表的距离
+  },
+  xAxis: {
+    type: 'category',
+    data: ['1999', '2000', '2001', '2002', '2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022']
+  },
+  yAxis: {
+    type: 'value'
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: {
+      type: 'cross'
+    }
+  },
+  legend: {
+    data: ['十堰市全年GDP/千万元', '十堰市全年人均GDP/元', '武汉市全年人均GDP/元'],
+    bottom: 10  // 调整legend到图表底部的距离
+  },
+  series: [
+    {
+      data: [
+        1686.222, 1801.257, 2034.368, 2331.775, 2450.489, 2929.016, 3066.3, 3384.1,
+        4115.1, 4879.4, 5519.4, 7344.3, 8493.5, 9547.8, 10843.7, 12093.1, 13203.538,
+        14524.85, 16667.255, 18635.76, 20127.21945, 18911.851, 21639.808, 23046.8
+      ],
+      type: 'bar',
+      name: '十堰市全年GDP/千万元'
+    },
+    {
+      data: [4943, 5603, 6322, 7232, 7582, 9039, 9432, 10422, 12730, 15099, 17046, 22317, 25396, 28480, 32255, 35886, 39089, 42770, 48827, 54618, 59163, 57577, 68379, 72882],
+      type: 'bar',
+      name: '十堰市全年人均GDP/元'
+    },
+    {
+      data: [13862, 14473, 16501, 17927, 19538, 22378, 26567, 30801, 36068, 45466, 52481, 57805, 66512, 76986, 86014, 97538, 100714, 107902, 120880, 135877, 145545, 130599, 135251, 137772],
+      type: 'bar',
+      name: '武汉市全年人均GDP/元'
+    }
+  ]
+};
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

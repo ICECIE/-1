@@ -1,0 +1,133 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=dataset-link&code=M4UwLgKglgtiD2BXMAKAZogdgYzFemABCgJSEDeAsAFCGHwAOeBhAvBTXXQDYgDmITABMAXBQC-AGk5cw8eNzwMxVWlzpgATlD4DNYgOQBDAB5RgB6WvXAAFvADuAYQJhBYMWiPdQMulL9CISMwI1APDmsuYCRNbBAxAG1A9USDAE8QI01LQgMAJgAGAEZ83IKSgGZyouKAFhqSgFZG4oA2VoB2VoAOVoBORqKh4qGygF0rdVSDQBpvQAA5QHK5QCw5QDyNQAKlQB4FQANlAHEAEQAFQBXrQFnE3OLKgDp-yUJ6q-K7y6um5_yryvfP5-Krnt-V06gK-90KQJBkMI_X-z3BdUBb3ufwByLhVwRYNedxhmJ62MI-KRxXBT2hVzaOP-kxSXDSs0AMXIrDY7A4nc53Oq4zlEnkYzmUwh1OqwoUisnCgl1a63QiVbly_HAoWkmlRGazQCQcsytnsjmdcvKrvk7kbUXVwcrpRTOSKrW0pVbOjbCE1wYKmn8PeD8uNaX6ogEoiYAIJmYAqQi0sDpBgJPLYEL8eCadKWWmYIxwQyAFz1AL9yBkCQfU6TD5kjtL42iEAElhCATGJClNppns3ltscAKSFwMtuhVqCiCiEOTKPJNJo9wjF6IgbQgCOEZLqyLTWSx-MGbhQTAgdOrujAGDyMC2MRaRAgfvTUAL4AAGSM6SQYAAQulDJpHAf13QQDADC2GE5Yjmg8DYIgS4GHeUCLgYM60rO6iqH-o6boYO57r-f7Hqe56jpoV43jY85wY-z6vh-X4_iRXAAUBIFLuQhDgZB0GwfBiGrshXCoX-MZxphu77nRR4nvAZ4XkR160keZGLk-L7INReTfg4OHrgxwHAKBLFsVBhicRY3HrrxdD8euglbgwcGadMQ6GLZolyYQmhGEIUCGXklSFD2YmEPEmBuPoy4GG6_l5PkU4GGqaHaUxKiuXQBkcSA3BoL2aHmVw3BGAARulSWHlw4GaDAIQhYY5D5eIKgAAK1Pk4jEOQQjiF2JBZX-OX_jg8BCPGll_lAbgwAAclmW6ZNk9nrgAbt4V6GE1c3THIChKCtJRlK54hIYEAb-AA3DIMDpE4wGaGAVwECgBiIAwwRuGWwCHPAu4hbkGA4MwRAoCA83uGQw3YAQwBgIQobhnW4FsIQgPuFcpiLrD8CJIU4ynVEUBoMQ0PmGjIO0mDmAQ0EsCCLpLDsATwBo1ci3cFehAANT3Nj67nZd2Q3eEADyTD4JgKDDaR97FWhdCOXkzlreoeWFdwktSylKYVWAVV5DVdUUPVaRsxTcBk8LhuxS1ovtZ13XZQFfVg4NKuq0zy1G1Twt27I8iKFA46ecb1OYMlpk9UhJCc1w-1qOI4dnRdV18-Agt_SgjB_bH1Ax8dQA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    setTimeout(function () {
+  option = {
+    legend: {},
+    tooltip: {
+      trigger: 'axis',
+      showContent: false
+    },
+    dataset: {
+      source: [
+        ['year', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022'],
+        ['第一产业增加值占GDP比重', 13.9, 14.1, 13.5, 12.3, 12.3, 11.8, 11.7, 11.3, 10.7, 11.3, 11.3, 9.8, 10.4, 11.5, 11.8, 11, 10.4, 10.5, 9.4, 8.5, 8.5, 10.1, 9.6, 9.8],
+        ['第二产业增加值占GDP比重', 49.4, 48.5, 48.4, 46, 44.8, 44.1, 44.5, 43.9, 39.4, 38.7, 40.1],
+        ['第三产业增加值占GDP比重', 39.2, 39.8, 40.7, 43.6, 44.7, 46.5, 47, 47.6, 50.6, 51.6, 50.2]
+      ]
+    },
+    xAxis: { 
+      type: 'category',
+      name: '年份'
+    },
+    yAxis: { 
+      gridIndex: 0,
+      name: '占比%'
+    },
+    grid: { top: '55%' },
+    series: [
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'line',
+        smooth: true,
+        seriesLayoutBy: 'row',
+        emphasis: { focus: 'series' }
+      },
+      {
+        type: 'pie',
+        id: 'pie',
+        radius: '30%',
+        center: ['50%', '25%'],
+        emphasis: {
+          focus: 'self'
+        },
+        label: {
+          formatter: '{b}: {@2012} ({d}%)'
+        },
+        encode: {
+          itemName: 'year',
+          value: '2012',
+          tooltip: '2012'
+        }
+      }
+    ]
+  };
+  myChart.on('updateAxisPointer', function (event) {
+    const xAxisInfo = event.axesInfo[0];
+    if (xAxisInfo) {
+      const dimension = xAxisInfo.value + 1;
+      myChart.setOption({
+        series: {
+          id: 'pie',
+          label: {
+            formatter: '{b}: {@[' + dimension + ']} ({d}%)'
+          },
+          encode: {
+            value: dimension,
+            tooltip: dimension
+          }
+        }
+      });
+    }
+  });
+  myChart.setOption(option);
+});
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>

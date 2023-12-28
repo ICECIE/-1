@@ -1,0 +1,98 @@
+<!--
+	此示例下载自 https://echarts.apache.org/examples/zh/editor.html?c=radar&code=PYBwLglsB2AEC8sDeBYAULWkwBsCmAXMuppmHgB5hEDkAjHQLR0BMgEOaCjBoPiGgfAqCIKjRKwAvgBoh-AOZ5oAEyKoMpWQEMwKogG0aAQRw5gAYzV5ZsAEIBXWdLA1RsXYbCWVOWAGUQM2RGiSaAF0hMSEAJxVVMIUhTD9fYzBgaNhNWNIkWGgVAFtCR0A9WMAbI3tYHJUKIgAWAAY6mpFxJVJkLNz8mkAmg0ASeVLyytha-sb0zEzsvNpAHNVAMoM-iur6htDmjLbJx0ASQ0AkA3mBobqR1bH1jsApg0BxTT3F4ZWWk4mOwBjlQDcDa8Glo_vWx9pABQNAOcG7wOyyaLUCYNIAGcABYqby0QwQMKGfClAD06NggHvlQCncoBv20ABUqwWHwvCwQB6OoByA0ApuaAcGNAFnagHe0wB98YA_tUAIW6AI31AG1O6ShIBwEDAOjCeA0xGOJJhwAA7kQAGZuKF4dJ3aGC4UAGT8-UU3yF0DwHjAAE98DEpZhDMADCkaABiOoAMWddRosExsEAfdGAO39WZzAGBKgBS0wD9foAcjMATkGALjlAP9-kdGIjVIUhKrCEDwUK06X191-jisNjwYFgADcoSTvHI_AFIS0zQjHBEovZE6p1NmrZLvi1S25LPlNABmKoATgA7KOHJOAKwsBwANgAHDUhw4Z-OWEuHEPl1PYEON9vYEutxDEy187p9EYTGZC7ZW13MCoxSoTea9Rf7ja7bQwpIABGKgABQ1A4LAzjODjgbANQAHQzgAlB6Xp-oA1hqAKKKUZxpGgAw_4AZHqAJDmgDwCYAcGaAGV636YOqPawIaxpmha3Z0aQv7JLQTo1K67qelifqhoAhuY4fG1FJl2tGkMEqzCEI0nCAA3EAA
+	⚠ 请注意，该图表不是 Apache ECharts 官方示例，而是由用户代码生成的。请注意鉴别其内容。
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/echarts.min.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-gl/2/files/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts-stat/latest/files/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/china.js"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/4.9.0/files/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://registry.npmmirror.com/echarts/5.4.3/files/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    option = {
+  title: {
+    text: '11-12月情感倾向'
+  },
+  legend: {
+    data: ['Allocated Budget', 'Actual Spending']
+  },
+  radar: {
+    indicator: [
+      { name: '赞扬', max: 40000 },
+      { name: '悲伤', max: 40000 },
+      { name: '喜悦', max: 40000 },
+      { name: '愤怒', max: 40000 },
+      { name: '惊奇', max: 40000 },
+      { name: '厌恶', max: 40000 },
+      { name: '恐惧', max: 40000 },
+    ],
+    shape: 'circle', // 可以添加 shape 属性来指定雷达图的形状
+    splitArea: {
+      show: false
+    },
+    splitLine: {
+      lineStyle: {
+        color: '#00FF00' // 设置雷达图的分隔线颜色为绿色
+      }
+    }
+  },
+  series: [
+    {
+      name: 'Budget vs spending',
+      type: 'radar',
+      data: [
+        {
+          value: [34979, 7952, 6803, 5728, 3689, 3578, 828],
+          name: 'Allocated Budget',
+          areaStyle: {
+            color: 'rgba(0, 255, 0, 0.5)' // 设置填充颜色为绿色，带有透明度
+          },
+          lineStyle: {
+            color: '#00FF00' // 设置线条颜色为绿色
+          }
+        },
+      ]
+    }
+  ]
+};
+
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
